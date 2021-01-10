@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function inicio(){
+        document.getElementById('listalocalidades').addEventListener('change',mostrarLocalidad);
+    }
+    
+    function mostrarLocalidad(ev){
+        let localidad;
+        if(ev.target.selectedIndex != 0 ){
+            localidad=ev.target.value;
+        }else{
+            localidad="Ninguna";
+        }
+        
+        document.getElementById('txtlocalidad').innerHTML=`Localidad seleccionada:  ${localidad}`;
+    }
+      
+    addEventListener('load',inicio);
+    </script>
+    <h1>Eventos</h1>
+    <label for="listalocalidades">Localidad:</label>
+    <select name="listalocalidades" id="listalocalidades">
+        <option value="">Seleccionar</option>
+        <option value="Utrera">Utrera</option>
+        <option value="Los Palacios">Los Palacios</option>
+        <option value="Dos Hermanas">Dos Hermanas</option>
+    </select>
+    <span style="font-size: 10pt" id="txtlocalidad"></span>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function inicio(){
+        document.getElementById('txtnombre').addEventListener('input',cambioNombre);
+      
+    }
+    
+    function cambioNombre(){
+        var texto=document.getElementById('txtnombre').value;
+        if(texto!=""){
+            document.getElementById('texto').innerHTML="Hola " + texto;
+        }else{
+            document.getElementById('texto').innerHTML="";
+        }    
+    }
+ 
+    addEventListener('load',inicio);
+    </script>
+    <h1>Evento onchange</h1>
+    <label for="txtnombre">Nombre:</label> <input type="text" name="txtnombre" id="txtnombre"><span style="font-size: 20pt" id="texto"></span>
+
+</body>
+</html>

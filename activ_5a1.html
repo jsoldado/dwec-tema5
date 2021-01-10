@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function iniciar(){
+            document.getElementById('boton1').addEventListener('click',manejadorEventos);
+            document.getElementById('boton2').addEventListener('click',manejadorEventos);
+            document.getElementById('div1').addEventListener('mouseenter',manejadorEventos);
+            document.getElementById('div2').addEventListener('mouseenter',manejadorEventos);
+        }
+
+        function manejadorEventos(ev){
+            let objeto=ev.target.id;
+            let evento=ev.type;
+       
+            console.log(`Objeto:${objeto} Evento:${evento}`);
+        }
+
+        addEventListener('load',iniciar);
+    </script>
+    <h1>Manejador eventos compartido (Ver consola depuración)</h1>
+    <input type="button" id="boton1" value="Botón 1">
+    <input type="button" id="boton2" value="Botón 2">
+    <br><br>
+    <p>Div 1</p>
+    <div id="div1" style="border: 1px solid black;">
+        <p>Hola</p>
+        <p>Hola</p>
+    </div>
+    <br>
+    <p>Div 2</p>
+    <div id="div2" style="border: 1px solid black;">
+        <p>Hola</p>
+        <p>Hola</p>
+    </div>
+
+</body>
+</html>

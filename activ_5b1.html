@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ </head>
+<script>
+    function iniciar() {
+        document.getElementById('mifumador').addEventListener('change', cambioChkFumador);
+        document.getElementById('enviar').addEventListener('click', validaFormulario);
+
+       // rellenaCampos();
+    }
+
+    // Usado en debug
+    function rellenaCampos(){
+      document.getElementById('minombre').value="Carlos";
+      document.getElementById('mialtura').value="176";
+      document.getElementById('misexo_h').checked=true;
+      document.getElementById('mifecha').value="1981-01-17";
+    }
+
+    function cambioChkFumador(ev) {
+        //alert("Cambio en fumador!" + ev.target.checked);
+        document.getElementById("micigarrillos").disabled = !ev.target.checked;
+    }
+
+    function validaFormulario(){
+      // Si está marcada la casilla de fumador el usuario debe seleccionar el número de cigarrillos
+      if(document.getElementById("mifumador").checked){
+          if(document.getElementById('micigarrillos').selectedIndex==0){
+            document.getElementById("micigarrillos").setCustomValidity('Debe indicar el número de cigarrillos');
+          } else {
+            document.getElementById("micigarrillos").setCustomValidity('');
+          }
+        }
+    }
+
+    addEventListener('load', iniciar);
+</script>
+
+<body>
+    <h1>Alta paciente</h1>
+    <form name="miformulario" method="POST" action="procesar.php">
+        <br><label for="minombre">Nombre(*): </label><input type="text" maxlength="30" name="minombre" id="minombre" required>
+        <br><label for="misexo">Sexo(*):</label>
+        <input type="radio" id="misexo_h" name="misexo" value="H" required> Hombre
+        <input type="radio" id="misexo_m" name="misexo" value="M"> Mujer
+        <br><label for="mialtura">Altura(50-210cm)(*):</label> <input type="number" id="mialtura" name="mialtura" min="50" max="210"
+            step="1" required><br>
+        <br><label for="mifecha">Fecha nacimiento(*):</label> <input type="date" id="mifecha" name="mifecha" required><br>
+        <br><label for="misemana">Semana preferente para la cita:</label> <input type="week" name="misemana" required><br>
+
+        <br><label for="mifumador">Fumador:</label> <input type="checkbox" name="mifumador" id="mifumador" value="">
+        <label for="micigarrillos">Nº cigarrillos: </label>
+        <select name="micigarrillos" id="micigarrillos" disabled>
+          <option value="0">Seleccionar</option>
+            <option value="1">1-5</option>
+            <option value="2">6-10</option>
+            <option value="3">Más de 10</option>
+        </select>
+      
+        <br>
+        <label for="mitexto">Observaciones: </label>
+        <br><textarea name="miobservaciones" id="miobservaciones" rows="5" cols="30"></textarea>
+        <br>
+        <input type="submit" id="enviar" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+</body>
+
+</html>
